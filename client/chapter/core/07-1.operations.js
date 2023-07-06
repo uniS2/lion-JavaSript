@@ -40,11 +40,13 @@ console.log(remainder);
 
 if(a % 2 === 0){
   console.log('짝수');
+} else {
+  console.log('홀수');  // 만약 a가 음수인 예외적인 상황도 '홀수' 처리
 }
 
 // 산술 연산자: 거듭 제곱
 // let power = 2 ** 53 - 1;
-let power = Math.floor(2, 53) - 1;
+let power = Math.pow(2, 53) - 1;
 
 
 // JavaScript 연산자는 피연산자를 적절한 타입(유형)으로 강제 변환합니다.
