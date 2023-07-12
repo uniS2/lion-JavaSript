@@ -247,7 +247,7 @@ function isEmptyObject(object) {
 
 let color = ['#ff0000', '#2b00ff', '00ff2f'];
 
-let [red, blue, g] = color;
+let [, , g] = color;
 
 for (let [key, value] of Object.entries(authUser)) {
   // let key = keyValue[0];
@@ -288,7 +288,7 @@ const salaries = {
 // const 강예나 = salaries.강예나
 // const 김태일 = salaries.김태일
 
-const { 권혜미, 이수연, 강예나, 김태일 } = salaries;
+const { 권혜미, 이수연, 강예나, 김태일 } = salaries;  //# alias. 별칭 사용가능. 권혜미는 이제 애초에 정의가 안된 <- 사용 불가능
 
 // console.log(권혜미);
 
