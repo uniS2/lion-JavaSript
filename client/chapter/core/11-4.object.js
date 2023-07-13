@@ -20,9 +20,9 @@ const shopOrder = {
   ],
   //% 메서드 추가해주세요 - 모든 것을 다 객체: 객체지향프로그래밍
   totalPrice() {
-    // :function(){ / (){ consise method / :()=>{ 화살표함수. window
-    /* let total = 0;  // 변수 선언 및 초기값 할당 해줘야!
-    this.menu.forEach((item) => {
+    // consise method / :function(){ / :()=>{ 화살표함수. window
+    // let total = 0;
+    /* this.menu.forEach((item) => {
       total += item.price * item.count;
       //@ this.total += item.price + item.count; // 변수를 아무렇게나 만들지 않아도 된다는 장점
     }) */
@@ -81,7 +81,8 @@ const navigationMenu = {
   getItem(index) {
     return this.items[index]; // consise method 일반함수 -> navigationMenu
   },
-  addItem(newItem){ //% (newItem) => { this를 바인딩하지 않아 상위 컨텍스트에서 this를 가져옴. 따라서, window.items.push가 되버림 -> 일반함수. consise method 나를 호출한 (.) 대상을 this로 바인딩
+  addItem(newItem){
+    // (newItem) => { 처럼 화살표 함수의 경우 this를 바인딩하지 않아 상위 컨텍스트에서 this를 가져옴. 따라서, window.items.push가 되버림 -> 일반함수. consise method 나를 호출한 (.) 대상을 this로 바인딩
     this.items.push(newItem);
   },
 };
