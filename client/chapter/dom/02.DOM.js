@@ -20,6 +20,7 @@
 for(let value of document.body.children){
     console.log(value)
 }     => <h1>, <div>, <script> */
+
 // - firstElementChild
 // - lastElementChild
 // - previousElementSibling
@@ -59,10 +60,11 @@ console.log( secondSpan );
 // - querySelectorAll
 // - closest
 
-console.log(first.closest('h1'));  // event delegation. (first에서) 가장 인접한 대상(부모, h1))이 누군지를 반환
+console.log(first.closest('h1'));  // event delegation. (first에서) 가장 인접한 대상(부모, h1)이 누군지를 반환
 
 /* 문서 대상 확인 */
 // - matches
+console.log(first.matches('.first'));
 
 //  선택자 안에 class | id 를 가지고 있는 대상이 있어?
 console.log( first.matches('#message') );

@@ -27,21 +27,31 @@ const { alert, confirm, prompt, setTimeout, setInterval } = window;
 //* callback, debounve
 
 //? setTimeout
-/* console.log(1);
 // 비동기
+
+console.log(1);
+
+const timer = setTimeout(() => {
+  // console.log('몇초 뒤에 해당 코드가 작동됩니다.')
+  console.log(2);
+}, 5000);
+
+console.log(3);
+
+
+//? setInterval
+const cancleInterval = setInterval(() => {
+  console.log('이 코드는 1초마다 실행되는 코드입니다.')
+}, 100);
+
 const timer = setTimeout(() => {
   // console.log('몇초 뒤에 해당 코드가 작동합니다.')
   console.log(2);
   clearInterval(cancleInterval);  //  interval 자체를 중지
-}, 5000);
+}, 500);
 
 clearTimeout(timer);  // Timer 실행 코드 중단
-console.log(3); */
 
-//? setInterval
-/* const cancleInterval = setInterval(() => {
-  console.log('이 코드는 1초마다 실행되는 코드입니다.')
-}, 5000); */
 
 //? window 안에 있는 location 객체
 /* Location 객체 --------------------------------------------------------- */
@@ -58,7 +68,9 @@ console.log(3); */
 const { href, protocol, host, port, search, hash, replace, reload } = location;
 // location.replace('https://www.naver.com')  // 뒤로 가기가 불가
 // location.href('https://www.naver.com')
-// location.reload  // 새로고침
+// location.replace() -> 원하는 링크로 이동(뒤로가기 불가)
+// location.href() -> 원하는 링크로 이동(뒤로가기 가능)
+// location.reload() -> 새로고침
 
 //^ Symbol.iterator 내장
 const urlParams = new URLSearchParams(location.search);
@@ -74,7 +86,7 @@ for (const [key, value] of urlParams) {
 //? Navigator
 /* Navigator 객체 -------------------------------------------------------- */
 
-// platform : 브라우저가 실행되는 플랫폼 정보를 변환: 운영체제
+// platform : 브라우저가 실행되는 플랫폼 정보를 변환: 운영체제 (win32, mac...)
 // userAgent : 브라우저와 운영체제 정보를 반환
 // language : 브라우저에서 사용되는 언어를 반환
 // online : 브라우저가 온라인인지 여부를 반환
@@ -101,23 +113,23 @@ function browserName() {
 
 browserName();
 
-function getLocationPosition() {
-  return new Promise((resolve, reject) => {
-    geolocation.getCurrentPosition((data) => {
-      // RejectionEvent geolocation.getCurrentPosition((data) => { // 비동기 방식
-      // console.log(data);  // 위치추적
-      // console.log( data.coords.latitude );  // 위도
-      // console.log( data.coords.longitude ); // 경도
-      if (!data) {
-        reject({ message: '위치 서비스를 활성화 해주세요.' });
-      } else {
-        const { latitude, longitude } = data.coords;
-        console.log(2);
-        resolve({ latitude, longitude });
-      }
-    });
-  });
-}
+// function getLocationPosition() {
+//   return new Promise((resolve, reject) => {
+//     geolocation.getCurrentPosition((data) => {
+//       // RejectionEvent geolocation.getCurrentPosition((data) => { // 비동기 방식
+//       // console.log(data);  // 위치추적
+//       // console.log( data.coords.latitude );  // 위도
+//       // console.log( data.coords.longitude ); // 경도
+//       if (!data) {
+//         reject({ message: '위치 서비스를 활성화 해주세요.' });
+//       } else {
+//         const { latitude, longitude } = data.coords;
+//         console.log(2);
+//         resolve({ latitude, longitude });
+//       }
+//     });
+//   });
+// }
 
 // 범쌤윙크: 인터렉티브 웹 - 캔버스 예시: tensorflow 모델 
 // 실시간 stream 영상
@@ -134,7 +146,10 @@ navigator.mediaDevices.getUserMedia({video:true}).then((stream)=>{
 // availHeight : 브라우저의 크기
 // innerHeight : 브라우저 해상도 크기 (안)  // window
 
-//^ orientation : 실습
+//^ orientation : 모니터 방향
+// (정방향 : landscape-primary)
+// (세로방향 : portrait-primary)
+
 const { width, height, availWidth, availHeight, orientation } = screen;
 
 
