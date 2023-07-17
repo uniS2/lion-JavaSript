@@ -33,7 +33,7 @@ let push = friends.push('동균');  // 위 요소 추가, 추가된 length 반�
 let shift = friends.shift();  // 앞 요소 제거, 제거된 대상 반환
 let pop = friends.pop(); // 뒤 요소 제거. 제거된 대상 값이 담김 (반환)
 
-console.log(friends)
+// console.log(friends)
 
 
 // 큐(queue) vs. 스택(stack)
@@ -43,11 +43,22 @@ console.log(friends)
 
 // 배열 요소 순환(loop)
 // for 문, for ~ of문
+for(let i = 0; i < friends.length; i++){
+  // console.log(friends[i]);
+}
+
+for(let value of friends){  // Symbol(Symbol.iterator)
+  // console.log(value)
+}
 
 
 // 배열 복사
-let copiedArray;
+// 전개 연산자. spread Syntax
+// let copiedArray = [...friends];
+// let copiedArray = friends.slice();
+let copiedArray = friends.toSorted();
 
+console.log(copiedArray);
 
 // 다차원 배열
 // 행렬을 저장하는 용도
@@ -59,3 +70,5 @@ const matrix = [
 ];
 
 // 행렬의 정중앙에 위치한 요소를 찾으려면?
+const a = matrix[1][1]
+console.log(a)
