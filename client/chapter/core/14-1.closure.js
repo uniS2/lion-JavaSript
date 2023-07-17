@@ -73,6 +73,38 @@ const value = first(); //^ second 본문을 넘김, value() === first()() true
 
 //^ 함수 본문 자체를 변수 result에 계속 할당 - 가비지 컬렉터가 let count = 0을 수집해가지 않는다. (본문이 메모리 상에 있으므로. result가 함수 본문 자체를 가지고 있으므로 "참조 가능") = counter() 환경 자체를 가비지 컬렉터 수집 대상으로 보지 않는다. -> 계속 증가
 let result = counter();
+let result1 = counter();
+let result2 = counter();
+let result3 = counter();  // 새 환경 계속 생성 -> 메모리 문제
+
+
+
+
+//^ 클릭 이벤트 처리
+const bindEvent = (node, type, handler) =>{  //? type: click, bind 등등 나머지 에러여야 하므로 정규표현식 사용해서 처리 하는 방법도 있음
+  if(typeof node === 'string'){
+    node = document.querySelector(node);
+  }
+  node.addEventListener('click', handler);
+
+  return () => node.removeEventListener(type,handler);
+}
+
+
+function handleClick(){
+  console.log('hit');
+}
+
+const remove = bindEvent('.first', 'click', handleClick)
+
+getTimeout(()=>{
+  remove()
+  // document.querySelector.('.first').removeEventListener('click',handleClick);
+}, 3000);
+
+
+
+
 
 
 // 모든 함수에는 실행 컨텍스트가 있습니다. 실행 컨텍스트는 해당 함수 내의 변수와
