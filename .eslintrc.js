@@ -1,31 +1,29 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true
+    env: {
+      browser: true,
+      es2021: true,
+      node: true,
     },
-    "extends": "eslint:recommended",
-    "globals": {
-        getNode: 'readOnly',
+    extends: 'eslint:recommended',
+    globals:{
+      gsap:'readOnly',
     },
-    "overrides": [
-        {
-            "env": {
-                "node": true
-            },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
-        }
+    overrides: [
+      {
+        env: {
+          node: true,
+        },
+        files: ['.eslintrc.{js,cjs}'],
+        parserOptions: {
+          sourceType: 'script',
+        },
+      },
     ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+    parserOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
-    "rules": {
-        "no-unused-vars": 'warn'
-    }
-}
+    rules: {
+      'no-unused-vars': 'warn',
+    },
+  };
