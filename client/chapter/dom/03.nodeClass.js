@@ -2,7 +2,7 @@
 /* DOM Node Class                 */
 /* ------------------------------ */
 
-//^ browser는 자바스크립트 엔진을 내장하며, DOM, BOM 등을 만들 수 있다. '객체 생성'
+//^ browser는 자바스크립트 엔진을 내장하며, DOM, BOM 등을 만들 수 있다. '객체 생성' [figma 참고]
 
 // Object
 //   ↓
@@ -61,14 +61,20 @@ console.log( first.tagName === 'SPAN' );  //* tag 일 경우에만 출력
 /* 노드 콘텐츠 읽기/쓰기 ---------------------------------------------------- */
 
 // - innerHTML
-first.innerHTML = '<div></div>' // 노드 접근 후 값 변경
-// but. 'hellooooooooooooo'처럼 값을 입력할 경우 스크립트 태그로 들어가기 때문에 해킹(cross-site 해킹)의 위협
+// first.innerHTML = '<div>aa</div>' // 노드 접근 후 값 변경
+// but. 'hellooooooooooooo'처럼 값을 입력할 경우 스크립트 태그로 들어가기 때문에 해킹(cross-site Scripting, XSS 해킹)의 위협
 // 따라서, 텍스트 컨텐츠나 innerHTML ~~ 을 사용
 
 // * 기존 내용 삭제
+// first.innerHTML = ''
+
 // * 기존 내용과 새로운 내용을 합친 새로운 내용을 씀
+first.innerHTML += '<div>안녕!</div>'
 
 // - textContent
+console.log( first.textContent ='50% 파격세일' )  // getter
+first.textContent // setter
+
 // * 요소 내의 텍스트에 접근
 // * 태그는 제외하고 오로지 텍스트만 추출
 
@@ -78,3 +84,20 @@ first.innerHTML = '<div></div>' // 노드 접근 후 값 변경
 // - hidden
 // * hidden은 HTML 속성으로, DOM 프로퍼티로 사용 가능
 // * hidden 프로퍼티는 기술적으로 style="display:none"와 동일
+
+const h1 = getNode('h1');
+
+// h1.hidden = true; // DOM 에서 제어 가능
+
+/* h1.hidden = false;
+
+let toggle = false;
+
+setInterval(() => {
+  h1.hidden = toggle? false:true;
+
+  toggle = !toggle;
+}, 1000) */
+
+
+console.log(h1);

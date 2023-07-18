@@ -7,8 +7,11 @@
   <link rel="stylesheet" href="./style.css" />
 
   <!-- 종속성 - 나열 -->
-  <script src="lib/dom/getNode.js"></script>
-  <script src="./chapter/dom/03.nodeClass.js" defer></script>
+  <script src="./lib/dom/getNode.js"></script>
+  <script src="./lib/dom/attr.js"></script>
+  <script src="./lib/dom/insert.js"></script>
+  <script src="./lib/dom/css.js"></script>
+  <script src="./chapter/dom/07.event.js" defer></script>
   <!-- <script src="./main.js" defer></script> -->
   <title>범쌤과 함께하는 자바스크립트</title>
 </head>
@@ -16,35 +19,13 @@
 <body>
 
   <h1>
-    <span class="first">hello</span>
-    <!-- 주석입니다 -->
+    <!-- tabindex는 표준속성이 있으며 data-tab-index는 사용자 정의 속성으로 다른 속성 -->
+    <span class="first" id="message" data-size="10" data-tab-index="1">hello</span>
     <span class="second">javascript</span>
   </h1>
+  <ul class="todo">
 
-  <div>
-    <label for="todo"></label>
-    <input type="text" id="todo" />
-  </div>
-
-  <!-- <button>button</button> -->
-  <!-- <label for="todo">할일</label>
-    <input type="text" id="todo" />
-
-    <button class="register">등록</button>
-
-    <h4>해야할 목록</h4>
-    <ul class="todoList"></ul> -->
-
-    <video id="videoElement" autoplay></video>
-
-  <!-- <nav>
-    <ul>
-      <li><button>A</button></li>
-      <li><button>B</button></li>
-      <li><button>C</button></li>
-      <li><button>D</button></li>
-    </ul>
-  </nav> -->
+  </ul>
 
 </body>
 
