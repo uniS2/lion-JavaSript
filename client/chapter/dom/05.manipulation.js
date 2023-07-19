@@ -6,7 +6,7 @@
 
 /* 노드 생성 메서드 --------------------------------------------------------- */
 
-// - document.createElement(tagName) – 태그 이름을 사용해 새로운 요소 생성
+// - document.createElement(tagName) – 태그 이름을 사용해 새로운 요소 생성 : react에서 사용
 // - document.createTextNode(value) – 새로운 텍스트 노드 생성
 // - element.cloneNode(deep) – 요소 복제. deep==true일 경우 모든 자손 요소도 복제
 
@@ -67,13 +67,13 @@ h1.insertAdjacentHTML('beforebegin', template) // ? template 는 문자만 가�
 
 const data = ['빨래하기','게임하기','유튜브보기','산책하기'];
 
-// forEach => 반환
-// reduce => 아무거나 (초기값 따라)
+// ^ forEach => 반환
+// ^ reduce => 아무거나 (초기값 따라)
 
-// filter => 배열을 반환
-// map => 배열을 반화
+// ^ filter => 배열을 반환
+// ^ map => 배열을 반환 : 현재 가장 잘 어울림!
 
-// for 문
+// ^ for 문
 
 const todo = getNode('.todo');
 
@@ -92,11 +92,10 @@ console.log( todoList );
 // react는 4, 5 생략, 배열만 생성하면 된다
 // - 4. 내보낸 배열 순환하기: 배열 순환해서 purt text
 todoList.forEach((item) => {
-  console.log(item);
+  // console.log(item);
 
   // - 5. 반복문안에서 렌저링하기
-  // ! 에러 발생: Cannot read properties of null (reading 'insertAdjacentHTML')
-  todo.insertAdjacentHTML('beforeend',item)
+  // todo.insertAdjacentHTML('beforeend',item)
   //^타겟                     위치     렌더링 항목
   insertLast(todo, item);
 })

@@ -2,7 +2,7 @@
 /* DOM Node Class                 */
 /* ------------------------------ */
 
-//^ browser는 자바스크립트 엔진을 내장하며, DOM, BOM 등을 만들 수 있다. '객체 생성' [figma 참고]
+// * browser는 자바스크립트 엔진을 내장하며, DOM, BOM 등을 만들 수 있다. '객체 생성' [figma 참고]
 
 // Object
 //   ↓
@@ -10,7 +10,7 @@
 // - 이벤트 관련 기능을 제공
 //   ↓
 // Node
-// - 공통 DOM 노드 프로퍼티를 제공
+// - 공통 DOM 노드 프로퍼티를 제공    * node.nodeType (1, 2, 3 ... 8)
 //   | —————————————————————————————————————————
 //   ↓                    ↓                    ↓
 // Element              Text                Comment
@@ -39,9 +39,9 @@
 
 
 //? HTMLElement – HTML 요소 노드의 베이스 역할을 하는 클래스입니다.   * 개개인별
-//*               HTMLInputElement – <input> 요소에 대응하는 클래스
-//*               HTMLBodyElement – <body> 요소에 대응하는 클래스
-//*               HTMLAnchorElement – <a> 요소에 대응하는 클래스  * a 태그의 href
+// *              HTMLInputElement – <input> 요소에 대응하는 클래스
+// *              HTMLBodyElement – <body> 요소에 대응하는 클래스
+// *              HTMLAnchorElement – <a> 요소에 대응하는 클래스  * a 태그의 href
 
 
 /* 노드 정보 ------------------------------------------------------------- */

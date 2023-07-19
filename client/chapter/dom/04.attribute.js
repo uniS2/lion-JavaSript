@@ -18,7 +18,7 @@ const first = getNode('.first');
 console.dir(first.id); // message
 console.dir(first.className); // class 생성자 중복 방지
 
-console.log(first.size); //^ 표준 속성이 아니라 인식하여 DOM에 매핑되지 않는다. = 프로퍼티로 사용할 수 없다.
+console.log(first.size); //^ 표준 속성이 아니라 인식하여 DOM에 매핑되지 않는다. = 프로퍼티로 사용할 수 없다. (불러도 undefined)
 
 /* DOM 프로퍼티 ----------------------------------------------------------- */
 
@@ -38,7 +38,7 @@ console.log(first.size); //^ 표준 속성이 아니라 인식하여 DOM에 매�
 
 // ^ 비표준 속성도 접근 가능
 console.log(first.hasAttribute('title')); // Boolean 값 반환
-console.log(first.getAttribute('size')); // 속성값
+console.log(first.getAttribute('size')); // 속성값. 표준 속성이 아니어도 가져옴!
 
 // ^ first.setAttribute('class', 'second") 처럼 기존속성을 변경하기 때문에 class는 classList 접근해서 제거(remove) 또는 추가(add) 하는 경우가 많다.
 // first.setAttribute('title',''); // set.
@@ -51,7 +51,7 @@ for (let value of first.attributes) {
 first.getAttribute('id'); // message
 
 // ^ 생성부
-function getAttr(node, prop) {
+/* function getAttr(node, prop) {
   // * 0. 넘어온 대상이 문자인지를 체크
   // * 1. 체크 후 element node 로 변경해 줘야함..!
 
@@ -65,9 +65,9 @@ function getAttr(node, prop) {
   }
 
   return node.getAttribute(prop);
-}
+} */
 
-function setAttr(node, prop, value) {
+/* function setAttr(node, prop, value) {
   if (typeof node === 'string') {
     node = getNode(node);
   }
@@ -86,7 +86,7 @@ function setAttr(node, prop, value) {
   }
 
   node.setAttribute(prop, value); // ^ 반환값이 필요없는 경우이기 때문에 return 은 사실상 필요가 없다.
-}
+} */
 
 //^ 선언부
 getAttr('.first', 'id'); // 함수. function. 상자 함, 셈 수.
