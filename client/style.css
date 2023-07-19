@@ -65,10 +65,16 @@ nav > ul > li > button{
 
 nav > ul > li:hover > button{
   transform: translateY(-5px);
-} */
+} 
+
+.first{
+  display: block;
+}
+*/
 
 
 /* DOM 객체 통한 태그 삽입 */
+
 /* .userCard{
   max-width: 350px;
   display:flex;
@@ -97,6 +103,7 @@ nav > ul > li:hover > button{
 } */
 
 /* 축구공 */
+
 /* .ground{
   width: 400px;
   height: 300px;
@@ -110,7 +117,15 @@ nav > ul > li:hover > button{
 
 #ball{
   transition: transform 0.2s;
-} */
+  pointer-events:none;    // 축구공 클릭시 좌표값 가져오지 못함 -> 클릭 되지 않도록 부여
+}
+
+.emotion{
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
+}
+*/
 
 
 /* 08.bubble */
@@ -132,6 +147,7 @@ p{
 
 
 /* Event delegation */
+
 .container{
   padding: 1rem;
   border: 1px solid black;
