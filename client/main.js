@@ -1,10 +1,8 @@
-// eslint-disable
-// eslint no-unused-vars: 'off'
+import { getNode, clearContents } from './lib/index.js';
 
-console.log('hello js!');
+getNode;
+clearContents;
 
-const a = 10;
+const container = getNode('.container');
 
-// eslint-enable
-
-const b = 10;
+console.log(container);
