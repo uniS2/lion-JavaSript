@@ -1,4 +1,5 @@
-import { getNode, clearContents } from './lib/index.js';
+import { clearContents, getNode } from './lib';
+// import { getNode, clearContents } from './lib/index.js';
 
 getNode;
 clearContents;
