@@ -5,17 +5,30 @@
 // 번들러의 힘
 // webpack vite (default 모듈 환경: 내장 ".lib"로 경로 생략 가능)
 
-import { getNode, getNodes, clearContents, insertLast } from './lib/index.js'; // 바닐라 자바스크립트 환경에서는 .js 붙여주어야함
+// IIFE
+// 이름 바꿔쓰기 기능, 함수자체를 모듈화, 내가 원하는 함수만 내보내는 것
+/* (function (g) {
+  g;
+})(window); */
+
+// rename : as
+
+import {
+  getNode as $,
+  getNodes,
+  clearContents,
+  insertLast,
+} from './lib/index.js'; // 바닐라 자바스크립트 환경에서는 .js 붙여주어야함
 // ? [page-1]
 // 1. input value 값 가져오기
 // 2. 두 수의 합 더하기
 // 3. result 출력 하기
 
-const first = getNode('#firstNumber');
-const second = getNode('#secondNumber');
-const result = getNode('.result');
+const first = $('#firstNumber');
+const second = $('#secondNumber');
+const result = $('.result');
 // ^ clear 버튼
-const clear = getNode('#clear');
+const clear = $('#clear');
 
 function handleInput() {
   let firstValue = +first.value;
@@ -55,7 +68,7 @@ clear.addEventListener('click', handleClear); // ! event 종류..!
 
 // ^ 이벤트 위임
 // handle 이해하기 쉬운 prefix
-const calculator = getNode('.calculator');
+const calculator = $('.calculator');
 const numberInputs = Array.from(getNodes('input:not(#clear)')); // nodeList -> 배열
 // $ css 선택자 input:not(#clear)
 
