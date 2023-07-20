@@ -8,8 +8,15 @@
 // IIFE
 // 이름 바꿔쓰기 기능, 함수자체를 모듈화, 내가 원하는 함수만 내보내는 것
 /* (function (g) {
-  g;
-})(window); */
+  g === window ;
+})(window); 
+
+(function ($) {
+
+})(getNode); 
+
+let getNodel
+*/
 
 // rename : as
 
