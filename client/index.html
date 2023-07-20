@@ -5,16 +5,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./style.css" />
-  <script src="./main.js"></script>
+
+  <!-- script 불러오기 -->
+  <!-- <script src="./lib/dom/getNode.js"></script>
+  <script src="./lib/dom/css.js"></script>
+  <script src="./lib/dom/attr.js"></script>
+  <script src="./lib/dom/bindEvent.js"></script>
+  <script src="./lib/dom/insert.js"></script>
+  <script src="./lib/dom/clearContent.js"></script> -->
+  <!-- type="module" : 캡슐화 -->
+  <script src="./main.js" type="module"></script>
   <title>범쌤과 함께하는 자바스크립트</title>
 </head>
 
 <body>
 
-  <h1>
-    <span>hello</span>
-    <span>javascript</span>
-  </h1>
+  <form class="calculator">
+    <div class="first">
+      <label for="firstNumber">First Value</label>
+      <input type="number" name="first" id="firstNumber" required />
+    </div>
+
+    <div class="operator">
+      +
+    </div>
+
+    <div class="second">
+      <label for="secondNumber">Second Value</label>
+      <input type="number" name="second" id="secondNumber" required />
+    </div>
+
+    <input id="clear" type="submit" value="clear" />
+
+    <div class="result">
+      -
+    </div>
+
+  </form>
 
 </body>
 
