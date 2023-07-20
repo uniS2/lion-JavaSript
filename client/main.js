@@ -54,20 +54,30 @@ clear.addEventListener('click', handleClear); // ! event 종류..!
 // .calculator 이벤트 input
 
 // ^ 이벤트 위임
+// handle 이해하기 쉬운 prefix
 const calculator = getNode('.calculator');
-const numberInputs = Array.from(getNodes('input:not(#clear)'));
+const numberInputs = Array.from(getNodes('input:not(#clear)')); // nodeList -> 배열
+// $ css 선택자 input:not(#clear)
 
-/* function handleInput2() {
-  numberInputs.reduce((total, input) => total + Number(input.value), 0);
+function handleInput2() {
+  const total = numberInputs.reduce(
+    (total, input) => total + Number(input.value),
+    0
+  );
 
   clearContents(result);
-  insertLast(result, total);
+  insertLast(result, total); // 렌더링
 }
 
 function handleClick() {
-  numberInputs.forEach(clearContents);
+  numberInputs.forEach(clearContents); // 생략구문 : 매개변수 item 하나만 받을 시 전부 생략 가능
+
+  /*  numberInputs.forEach((item)=>{
+    clearContents(item);
+  }) */
+
   result.textContent = '-';
 }
 
 calculator.addEventListener('input', handleInput2);
-clear.addEventListener('click', handleClick); */
+clear.addEventListener('click', handleClick);
