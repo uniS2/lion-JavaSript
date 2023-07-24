@@ -1,6 +1,16 @@
 import { jujeobData } from './data/data.js';
 import { showAlert } from './lib/dom/showAlert.js';
-import { clearContents, copy, getNode, getRandom, insertLast, isNumericString, shake } from './lib/index.js';
+import {
+  addClass,
+  clearContents,
+  copy,
+  getNode,
+  getRandom,
+  insertLast,
+  isNumericString,
+  removeClass,
+  shake,
+} from './lib/index.js';
 // import { getNode, clearContents } from './lib/index.js';
 
 // [phase-1]
@@ -24,39 +34,38 @@ import { clearContents, copy, getNode, getRandom, insertLast, isNumericString, s
 // 1. result 클릭 이벤트 바인딩
 
 // const container = getNode('.container');
-const submit = getNode('#submit')
+const submit = getNode('#submit');
 const nameField = getNode('#nameField');
 const resultArea = getNode('.result');
 
 function handleSubmit(e) {
-  e.preventDefault()
+  e.preventDefault();
 
-  let name = nameField.value;  // 1-2. nameField 값 가져오기
-  const list = (jujeobData(name));  // 2-1. 2-2. replace => regEXP (정규표현식)
-  const pick = list[getRandom(list.length)];  // 1-4. jujeob에서 랜덤한 주접 한개
+  let name = nameField.value; // 1-2. nameField 값 가져오기: 입력한 값
+  const list = jujeobData(name); // 2-1. 2-2. replace => regEXP (정규표현식)
+  const pick = list[getRandom(list.length)]; // 1-4. jujeob에서 랜덤한 주접 한개
 
-  if(!name || name.replace(/\s*/g,'') === '') {
+  if (!name || name.replace(/\s*/g, '') === '') {
     // throw new ReferenceError ("nameField의 input 값에는 값을 입력해야합니다.")
-    showAlert('.alert-error', '이름을 입력 해주세요!!', 2000) // 3-1. 3-2. 사용자에게 알려주기, 재사용 가능한 함수
+    showAlert('.alert-error', '이름을 입력 해주세요!!', 2000); // 3-1. 3-2. 사용자에게 알려주기, 재사용 가능한 함수
 
-    shake.restart();  // 3-3. gsap 라이브러리
-    
+    shake.restart(); // 3-3. gsap 라이브러리
+
     return;
   }
   // 숫자거나 NaN이거나 똑같은 값 반환
-  if(!isNumericString(name)){ // 2-3. isNaN
-    showAlert('.alert-error', '제대로된 이름을 입력 해주세요!!', 2000)  // 3-1. 사용자에게 알려주기
+  if (!isNumericString(name)) {
+    // 2-3. isNaN
+    showAlert('.alert-error', '제대로된 이름을 입력 해주세요!!', 2000); // 3-1. 사용자에게 알려주기
+
     shake.restart();  // play -> end : 다시 play가 말이 안됨
 
     return;
   }
 
-
   // resultArea?.textContent = '';
   clearContents(resultArea);
   insertLast(resultArea, pick);
-
-  
 }
 
 // 이름을 제대로 입력 했을 때 클립보드에 복사가 될 수 있도록.
@@ -66,18 +75,15 @@ function handleSubmit(e) {
 
 // if(state){  ...logic }
 
-function handleCopy(){
+function handleCopy() {
   const text = resultArea.textContent;
 
-  // main.js:65 Uncaught TypeError: Cannot read properties of undefined (reading 'writeText') at HTMLDivElement.handleCopy (main.js:65:23)
+  //! main.js:65 Uncaught TypeError: Cannot read properties of undefined (reading 'writeText') at HTMLDivElement.handleCopy (main.js:65:23)
   // 클립보드 복사가 완료 되었다면, 그 때 alert를 띄어야함. promise
-  copy(text).then(()=>{
-    showAlert('.alert-success','클립보드 복사 완료!');  // BOM : navigator
-  })
-
+  copy(text).then(() => {
+    showAlert('.alert-success', '클립보드 복사 완료!'); // BOM : navigator
+  });
 }
-
-
 
 submit.addEventListener('click', handleSubmit); // 1-1. 핸들러 연결
 resultArea.addEventListener('click', handleCopy); // 4-1. 클릭이벤트 바인딩
