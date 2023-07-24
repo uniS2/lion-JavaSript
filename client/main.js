@@ -126,7 +126,7 @@ function handleRecord() {
 
   renderRecordItem();
 
-  endScroll(getNode('html'));
+  // endScroll(getNode('html'));
 }
 
 function handleReset() {
