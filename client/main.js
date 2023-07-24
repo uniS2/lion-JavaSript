@@ -1,10 +1,4 @@
-// eslint-disable
-// eslint no-unused-vars: 'off'
+import { diceAnimation } from "./lib/animation/index.js";
 
-console.log('hello js!');
 
-const a = 10;
-
-// eslint-enable
-
-const b = 10;
+diceAnimation()
