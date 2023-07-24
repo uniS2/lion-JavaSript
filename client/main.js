@@ -46,7 +46,6 @@ function handleSubmit(e) {
   // 숫자거나 NaN이거나 똑같은 값 반환
   if(!isNumericString(name)){ // 2-3. isNaN
     showAlert('.alert-error', '제대로된 이름을 입력 해주세요!!', 2000)  // 3-1. 사용자에게 알려주기
-
     shake.restart();  // play -> end : 다시 play가 말이 안됨
 
     return;
@@ -70,7 +69,7 @@ function handleSubmit(e) {
 function handleCopy(){
   const text = resultArea.textContent;
 
-  //! main.js:65 Uncaught TypeError: Cannot read properties of undefined (reading 'writeText') at HTMLDivElement.handleCopy (main.js:65:23)
+  // main.js:65 Uncaught TypeError: Cannot read properties of undefined (reading 'writeText') at HTMLDivElement.handleCopy (main.js:65:23)
   // 클립보드 복사가 완료 되었다면, 그 때 alert를 띄어야함. promise
   copy(text).then(()=>{
     showAlert('.alert-success','클립보드 복사 완료!');  // BOM : navigator
