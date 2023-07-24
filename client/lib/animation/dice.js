@@ -1,6 +1,6 @@
 import { attr } from "../dom/attr.js";
 import { getNode } from '../dom/getNode.js'
-import { gsap } from "../../../node_modules/gsap/index.js";
+// import { gsap } from "../../../node_modules/gsap/index.js";
 
 const cube = getNode('#cube');
 
@@ -28,6 +28,8 @@ export function diceAnimation (){
     [-180,0], // 6
   ]
 
-  gsap.to(cube,{ease:'linear',duration:0.2,z:-100,rotationX:rotationValue[random][0],rotationY:rotationValue[random][1],onComplete:complete})
-
+  // gsap.to(): 이 메서드는 GSAP 라이브러리의 애니메이션을 생성하는 함수
+  // GSAP를 이용하여 3D 객체인 cube에 일정한 시간 동안 이동(z축), 회전(X축 및 Y축)을 적용하는 애니메이션
+  // 3D 공간에서 z축은 보통 화면에서 멀리 떨어진 방향
+  gsap.to(cube,{ease:'linear',duration:0.2,z:-100,rotationX:rotationValue[random][0],rotationY:rotationValue[random][1],onComplete:complete}) // 애니메이션 완료 후 호출할 함수 지정
 }
