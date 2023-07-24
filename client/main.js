@@ -6,6 +6,7 @@ import {
   insertLast,
   endScroll,
   clearContents,
+  memo,
 } from './lib/index.js';
 
 // [phase-1] 주사위 굴리기
@@ -34,13 +35,19 @@ import {
 const disableElement = (node) => (node.disabled = true);
 // 2. enableElement(node)
 const enableElement = (node) => (node.disabled = false);
-// 3. siDisableState(noode) => true / false
+// 3. isDisableState(node) => true / false
+const isDisableState = (node) => {
+  return node.disabled === true ? true : false;
+}
 
 // 1. visibleElement(node)
-const visibleElement = (node) => (node.hidden = true);
+const visibleElement = (node) => (node.hidden = false);
 // 2. invisivleElement(node)
-const invisibleElement = (node) => (node.hidden = false);
-// 3. is VisibleState(node) => true / false (hidden true, false)
+const invisibleElement = (node) => (node.hidden = true);
+// 3. isVisibleState(node) => true / false (hidden true, false)
+const isVisibleState = (node) => {
+  return (node.hidden === false) ? true : false;
+}
 
 let count = 0;
 let total = 0;
@@ -78,6 +85,10 @@ const [startButton, recordButton, resetButton] = getNodes(
 const recordListWrapper = getNode('.recordListWrapper');
 const tbody = getNode('.recordList tbody');
 
+// ^ memo setter, getter
+memo('@tbody', ()=>getNode('.recordList tbody'))
+memo('@tbody')  // ^ @tbody로 변수로 사용
+
 //$ 1-4. IIFE (즉시 실행 함수 표현)
 const handleRollingDice = ((e) => {
   let isClicked = false;
@@ -107,17 +118,19 @@ const handleRollingDice = ((e) => {
 // total 값이 나올 수 있도록
 
 function handleRecord() {
-  invisibleElement(recordListWrapper);
+  visibleElement(recordListWrapper);
   // recordListWrapper.hidden = false;
 
   // 큐브의 data-dice 값만 가져오기
   // const diceValue = +attr('#cube', 'data-dice'); // 문자열 반환
 
   renderRecordItem();
+
+  endScroll(getNode('html'));
 }
 
 function handleReset() {
-  visibleElement(recordListWrapper);
+  invisibleElement(recordListWrapper);
   // recordListWrapper.hidden = true;
   disableElement(recordButton);
   disableElement(resetButton);

@@ -15,6 +15,8 @@ export function diceAnimation (){
 
   random = gsap.utils.random([0,1,2,3,4,5]);
 
+  // complete() 함수에서는 cube 요소의 dice 속성을 변경하여 주사위의 숫자를 설정합니다.
+  // setAttr : node.dataset[prop] => data-dice
   function complete(){
 		attr(cube,'dice',random + 1)
   }
