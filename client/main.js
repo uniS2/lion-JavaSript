@@ -1,10 +1,8 @@
-// eslint-disable
-// eslint no-unused-vars: 'off'
+import { xhr } from './lib/index.js';
 
-console.log('hello js!');
-
-const a = 10;
-
-// eslint-enable
-
-const b = 10;
+xhr.get(
+  'https://jsonplaceholder.typicode.com/users',
+  (res) => {
+  // console.log(res);
+  }
+);
