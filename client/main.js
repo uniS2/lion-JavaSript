@@ -68,9 +68,9 @@ function createItem(value) {
 // render
 function renderRecordItem() {
   // 큐브의 data-dice 값 가져오기
-  const diceValue = +attr('#cube', 'data-dice');
+  const diceValue = +attr(memo('cube'), 'data-dice');
 
-  insertLast(tbody, createItem(diceValue));
+  insertLast('memo(@tbody)', createItem(diceValue));
 
   endScroll(recordListWrapper);
 }
@@ -83,11 +83,11 @@ const [startButton, recordButton, resetButton] = getNodes(
   '.buttonGroup > button'
 );
 const recordListWrapper = getNode('.recordListWrapper');
-const tbody = getNode('.recordList tbody');
+// const tbody = getNode('.recordList tbody');
 
 // ^ memo setter, getter
 memo('@tbody', ()=>getNode('.recordList tbody'))
-memo('@tbody')  // ^ @tbody로 변수로 사용
+memo('@tbody')  // ^ memo(@tbody)로 변수로 사용. 실제 태그 이름이랑 구분짓기 위해 @ 사용
 
 //$ 1-4. IIFE (즉시 실행 함수 표현)
 const handleRollingDice = ((e) => {
@@ -135,7 +135,7 @@ function handleReset() {
   disableElement(recordButton);
   disableElement(resetButton);
 
-  clearContents(tbody);
+  clearContents('memo(@tbody)');
 
   count = 0;
   total = 0;

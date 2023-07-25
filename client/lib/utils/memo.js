@@ -25,7 +25,7 @@ export const memo = (key, callback) => {
   console.log(cache);
 }
 
-memo('cube', () => getNode('#cube'))  // getNode 한 값 자체가 casche[key]의 value로 설정됨
+memo('cube', () => getNode('#cube'));  // getNode 한 값 자체가 casche[key]의 value로 설정됨
 memo('cube', () => 1,2,3) // * 덮어쓰기 되므로 중복 처리!
 
 console.log(memo('cube'));  // div#cube
