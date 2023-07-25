@@ -4,9 +4,9 @@ import { xhr } from './xhr.js';
 function delay(callback, timeout = 1000) {
   setTimeout(callback, timeout);
 
-  setTimeout(() => {
+  /* setTimeout(() => {
     callback;
-  }, timeout);
+  }, timeout); */
 }
 
 //* 1안
@@ -21,14 +21,20 @@ delay(()=>{
   }
 }) */
 
-//* 2안 : 에러ㅠ
-/* console.log(1);
+//* 2안 : 해결!
+delay(() => {
+  console.log(1);
 
-delay(()=>{
-  console.log(2);
-  
-  delay(console.log(3));
-}) */
+  delay(() => {
+    console.log(2);
+
+    //% delay(console.log(3));  : 1번 -> `console.log(3)` 함수가 즉시 호출, 반환 값 `undefined`가 `delay` 함수의 콜백으로 전달! 따라서 원하는 시간이 지나지 않고 바로 `callback` 함수가 실행된다.
+
+    delay(()=>{ //% : 2번 => 따라서 콜백 함수 자체를 인자로 전달하여 timeout 시간이 지난 후에 `callback` 함수가 실행될 수 있도록 한다.
+      console.log(3)
+    })
+  });
+});
 
 //? 범쌤
 /* delay(()=>{
@@ -85,22 +91,22 @@ first.style.top = '0' */
 }) */
 
 //? delayP 함수를 실행하면 리턴되는 값이 promise 객체입니다.
-function delayP(){
-  
+function delayP() {
   //$ 성공이야? (약속해 알려주기로) 그러고 나서(then) 이거 해
   //$ 실패야? (약속해 알려주기로) 그럼 이거 해해
 
   return new Promise((resolve, reject) => {
-    resolve('성공입니다!!')
-  })
+    resolve('성공입니다!!');
+  });
 }
 
-console.log(delayP());  //? promise 객체가 튀어나온다.
+console.log(delayP()); //? promise 객체가 튀어나온다.
 
-delayP()  //$ 객체 (new 생성자로 인해 생성된 Promise 객체)
-.then((result)=>{ //? return 결과 확인가능
-  console.log(result);
-})
+delayP() //$ 객체 (new 생성자로 인해 생성된 Promise 객체)
+  .then((result) => {
+    //? return 결과 확인가능
+    // console.log(result);
+  });
 
 //$ Promise 정리
 /* 
@@ -109,7 +115,6 @@ $ 2. 인수로 넘겨주는 result, error가 자동으로 결과 또는 에러�
 $ 3. excutor(실행함수) 에서 반환되는 결과는 무조건 .then 을 통해 받을 수 있다.
 + always 사용하면 결과를 바로 받을 수 있다.
 */
-
 
 //$ Promise 체이닝 미리보기
 function delay_P() {
@@ -122,26 +127,25 @@ function delay_P() {
 }
 
 delay_P()
-.then((결과) => {
-  console.log('로직 실행');
+  .then((결과) => {
+    // console.log('로직 실행');
 
-  return delay_P()
-  /* return new Promise((성공, 실패) => {
+    return delay_P();
+    /* return new Promise((성공, 실패) => {
     
   }) */
-})
-.then((결과) => {
-  console.log('로직 실행');
+  })
+  .then((결과) => {
+    // console.log('로직 실행');
 
-  return delay_P()
-})
-.then((결과) => {
-  console.log('로직 실행');
-})
-
+    return delay_P();
+  })
+  .then((결과) => {
+    // console.log('로직 실행');
+  });
 
 //$ fetch 미리보기
-async function fetch(){
+/* async function fetch(){
   const response = fetch('url', {
     method:'GET',
     headers:{
@@ -150,4 +154,4 @@ async function fetch(){
   })
 
   response ? // 기억이 안난...
-}
+} */
