@@ -84,8 +84,8 @@ export function xhr({
     'Content-Type': 'application.json',
     'Access-Control-Allow-Origin': '*',
   },
-} = {}) {
-  const xhr = new XMLHttpRequest();
+} = {}) { //* 기본값을 객체로 하겠다
+  const xhr = new XMLHttpRequest(); //* 비동기 통신을 위한 하나의 객체
   // const onSuccess = () => {}
 
   xhr.open(method, url);
@@ -108,9 +108,11 @@ export function xhr({
       } else {
         onFail('실패');
       }
+      // 원래는 switch-case 구문을 사용해 n00번재 서버 문제가 발생하였습니다 라고 알려준다.
     }
   });
   xhr.send(JSON.stringify(body));
+  //* 'GET'이나 'DELETE' 일 때 xhr.send()의 역할은 없지만 실행을 위해 적어주어야..
 }
 
 //? 세번째 인수로 함수 받아주기 -> 세 번째 parameter
@@ -134,6 +136,8 @@ export function xhr({
     'Content-Type':'application/json',
     'Access-Control-Allow-Origin':'*' // 모두 허용
     //^ 전체 또는 특정 페이지 설정해야 안전하게 그 사이트만 접근 가능. '동일 출처(origin)에서만 요청하도록 제한하는 보안 메커니즘' -> 권한 부여하도록 브라우저에 알려주는 객체
+    //$ CORS 에러를 막기 위해서 지정
+    //$ 1. 다른 출처를 참조하는 것은 엄청난 보안 이슈! -> Block: 에러 발생   2. 그럼에도 불구하고 필요한 경우 'Access-Control-Allow-Origin':'*' 문을 통해 실행
   }
 ); */ //^ GET 방식으로 'https://jsonplaceholder.typicode.com/users' 주소로 AJAX 요청 - JSONPlaceholder API에서 사용자 정보를 받아오는 요청
 
@@ -160,6 +164,7 @@ export function xhr({
 //$ 교차 출처 리소스 공유 (CORS) (https://developer.mozilla.org/ko/docs/Web/HTTP/CORS)
 
 /* 
+[치현님] - 따로 정리하기!
 동일 출처 정책(SOP)는 "Same-Origin Policy"의 약자로, 웹 브라우저에서 보안을 강화하기 위해 적용되는 정책입니다. 이 정책은 웹 페이지의 자바스크립트나 XMLHTTPRequest와 같은 리소스들이 동일 출처(origin)에서만 요청하도록 제한하는 보안 메커니즘입니다.
 
 출처(origin)란 프로토콜, 호스트, 포트 번호로 구성된 URL을 말합니다. 예를 들어, 'https://www.example.com'와 'https://api.example.com'은 서로 다른 출처로 간주됩니다. 따라서 www.example.com에서 로드된 웹 페이지는 api.example.com의 리소스를 요청하는 것이 SOP에 위배되며, 브라우저는 이러한 요청을 차단합니다.
