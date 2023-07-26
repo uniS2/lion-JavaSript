@@ -6,6 +6,7 @@
 
 // re-export
 
+export * from './S2.js';
 export * from './xhr.js';
 export * from './copy.js';
 export * from './memo.js';

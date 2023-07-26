@@ -1,8 +1,13 @@
-import { xhr } from './lib/index.js';
+import { S2 } from "./lib/index.js";
 
-xhr.get(
-  'https://jsonplaceholder.typicode.com/users',
-  //^ naver.com 의 경우 우리가 허용을 해도 서버는! 권한을 주고싶지! 않와!!!!!!!! CORS error 가 떨어지는 이유 (auth: number) => 서버 개발자의 문제 (권한)
-  (res) => {
-  console.log(res);
-});
+const data = await S2.get('https://jsonplaceholder.typicode.com/users');
+
+console.log(data);
+
+// AXIOS : 함수 / 메서드 처럼 사용가능 -> 라이브러리 (https://axios-http.com/kr/docs/intro)
+
+//* UpDate
+//^ PUT을 쓰려면 GET으로 가져온 다음 부분 수정(추가)해서 다시 받아온 전체를 PUT
+//^ PATCH : 리소스 부분수정
+
+//* React: 변경하자마자 새로운 값 다시 get해 다시 렌더링해 (리렌더링)
