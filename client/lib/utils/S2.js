@@ -148,7 +148,7 @@ fetch(url) : 기본 get 통신 = 프라미스 객체
 const responses = await fetch(URL);
 const data = await responses.json();
 
-console.log( data );
+// console.log( data );
 
 // fetch(URL).then((result)=>{
 
