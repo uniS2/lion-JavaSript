@@ -143,3 +143,18 @@ fetch(url) : 기본 get 통신 = 프라미스 객체
 `response.data = await response.json()` //^ 응답 -> 파싱
 `userData = response.data`
 */
+
+//? [0727 범쌤] 간단한 예시로 정리
+const responses = await fetch(URL);
+const data = await responses.json();
+
+console.log( data );
+
+// fetch(URL).then((result)=>{
+
+//     result // responses object
+//     return result.json() // promise
+// })
+// .then((result)=>{
+//   console.log( result );
+// })
