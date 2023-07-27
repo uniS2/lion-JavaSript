@@ -60,7 +60,7 @@ first.style.top = '0' */
   errorMessage: '알 수 없는 오류가 발생했습니다.',
 }; */
 
-function delayP(options) {
+export function delayP(options) {
   let config = { ...defaultOptions };
 
   if (typeof options === 'number') {
@@ -334,6 +334,6 @@ async function postData(url = '', data = {}) {
   return response.json(); // JSON 응답을 네이티브 JavaScript 객체로 파싱
 }
 
-postData('https://example.com/answer', { answer: 42 }).then((data) => {
-  console.log(data); // JSON 데이터가 `data.json()` 호출에 의해 파싱됨
-});
+// postData('https://example.com/answer', { answer: 42 }).then((data) => {
+//  console.log(data); // JSON 데이터가 `data.json()` 호출에 의해 파싱됨
+// });
